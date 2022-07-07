@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: hello-world-workflow-template
+  namespace: argocd
   annotations:
     scenarios.ai.sap.com/name: "awesome-scenario"
     executables.ai.sap.com/name: "hello-world-workflow-template"
