@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: hello-world-workflow-template
+  annotations:
+    scenarios.ai.sap.com/name: "awesome-scenario"
+    executables.ai.sap.com/name: "hello-world-workflow-template"
+  labels:
+    executables.ai.sap.com/id: exec-999-id
+    scenarios.ai.sap.com/id: "9999"
+    ext.ai.sap.com/is-runtime-adapter-test: "true"
+spec:
+  entrypoint: whalesay-template
+  serviceAccountName: workflow
+  arguments:
+    parameters:
+      - name: message
+        value: hello world
+  templates:
+    name: whalesay-template
+    inputs:
+      parameters:
+        - name: message
+    container:
+      image: docker/whalesay
+      command: [cowsay]
+      args: ["{{inputs.parameters.message}}"]
+    outputs:
+      artifacts:
+      - archive:
+          none: {}
+        globalName: mc-model-01
+        name: mc-model-01
+        path: /app/model
