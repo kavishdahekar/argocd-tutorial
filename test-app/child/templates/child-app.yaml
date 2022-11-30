@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: child-app
+  name: child-app-{{ .Values.myVar1 }}-{{ .Values.myVar2 }}
   namespace: argocd
 spec:
   destination:
