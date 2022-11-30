@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: parent-app
-  namespace: i342302
+  namespace: argocd
 spec:
   destination:
-    namespace: i342302
+    namespace: argocd
     server: https://kubernetes.default.svc
-  project: worker-aws.eu-central-1.aic-worker-1
+  project: default
   source:
     helm:
       valueFiles:
-      - test-app/values/parent-values.yaml
+      - ../../test-app/values/parent-values.yaml
       parameters:
       - name: myVar1
         value: {{ .Values.myVar1 }}

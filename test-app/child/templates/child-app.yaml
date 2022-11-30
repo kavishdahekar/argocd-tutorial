@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: child-app
-  namespace: i342302
+  namespace: argocd
 spec:
   destination:
-    namespace: i342302
+    namespace: argocd
     server: https://kubernetes.default.svc
-  project: worker-aws.eu-central-1.aic-worker-1
+  project: default
   source:
     helm:
       valueFiles:
-      - test-app/values/child-values.yaml
+      - ../../test-app/values/child-values.yaml
     path: test-app/grandchild
     repoURL: https://github.com/kavishdahekar/argocd-tutorial
     targetRevision: main
