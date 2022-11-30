@@ -1,0 +1,6 @@
+apiVersion: v1
+description: test-app-child
+home: https://github.com/kavishdahekar/argocd-tutorial
+name: test-app-child
+version: 0.1.0
+appVersion: "not-in-use-currently"

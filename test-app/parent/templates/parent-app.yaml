@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: parent-app
+  namespace: i342302
+spec:
+  destination:
+    namespace: i342302
+    server: https://kubernetes.default.svc
+  project: worker-aws.eu-central-1.aic-worker-1
+  source:
+    helm:
+      valueFiles:
+      - ../values/parent-values.yaml
+      parameters:
+      - name: myVar1
+        value: .Values.myVar
+      - name: myVar2
+        value: "blah"
+    path: child
+    repoURL: https://github.com/kavishdahekar/argocd-tutorial
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
