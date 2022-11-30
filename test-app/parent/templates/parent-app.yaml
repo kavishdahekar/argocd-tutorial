@@ -11,13 +11,13 @@ spec:
   source:
     helm:
       valueFiles:
-      - ../values/parent-values.yaml
+      - test-app/values/parent-values.yaml
       parameters:
       - name: myVar1
-        value: .Values.myVar
+        value: {{ .Values.myVar1 }}
       - name: myVar2
         value: "blah"
-    path: child
+    path: test-app/child
     repoURL: https://github.com/kavishdahekar/argocd-tutorial
     targetRevision: main
   syncPolicy:
