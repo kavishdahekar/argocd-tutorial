@@ -1,11 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: whalesay
+  name: whalesay-{{ .Values.myVar1 }}-{{ .Values.myVar2 }}
   namespace: argocd
-  labels:
-    myVar1: {{ .Values.myVar1 }}
-    myVar2: {{ .Values.myVar2 }}
 spec:
   containers:
   - name: whalesay
