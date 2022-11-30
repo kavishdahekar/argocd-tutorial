@@ -3,6 +3,7 @@ kind: Application
 metadata:
   name: child-app-{{ .Values.myVar1 }}-{{ .Values.myVar2 }}
   namespace: argocd
+  {{ .Values }}
 spec:
   destination:
     namespace: argocd
